@@ -54,3 +54,6 @@ coverage/
 # AI generated temporary files (if any)
 .claude/
 .ai-cache/
+.cursorrules
+.gitignore
+.vscode
