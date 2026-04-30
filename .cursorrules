@@ -1,0 +1,38 @@
+# Agentic Template - Cursor Rules
+
+## Required Actions
+
+1. **ALWAYS read AGENTS.md first** before any action or response
+2. **Follow the workflow** defined in memory-bank/agents.md
+3. **Respect the tech stack** defined in memory-bank/tech-stack.md
+
+## Document Reading Order
+
+```
+1. AGENTS.md (root)                  → Project overview & entry point
+2. memory-bank/agents.md             → Detailed behavior rules & workflow
+3. memory-bank/design-document.md    → Project goals & architecture
+4. memory-bank/tech-stack.md         → Technology constraints
+5. memory-bank/implementation-plan.md → Implementation roadmap
+6. memory-bank/todo.md               → Current task status
+7. memory-bank/progress/             → Stage completion records (reverse chronological)
+```
+
+## Constraints
+
+- Do NOT suggest technologies not listed in tech-stack.md
+- Do NOT modify code without following the change workflow
+- Do NOT skip test verification after code changes
+- Do NOT make assumptions when uncertain - ask the user
+- Use the same language as the user's message
+
+## Context Recovery
+
+After reading all documents, output a context summary:
+```
+Project: [name]
+Current Stage: [stage]
+Progress: [X%]
+Active Tasks: [from todo.md]
+Tech Stack: [core versions]
+```
