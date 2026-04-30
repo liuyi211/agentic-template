@@ -3,19 +3,18 @@
 ## Required Actions
 
 1. **ALWAYS read AGENTS.md first** before any action or response
-2. **Follow the workflow** defined in memory-bank/agents.md
+2. **Follow the workflow** defined in AGENTS.md
 3. **Respect the tech stack** defined in memory-bank/tech-stack.md
 
 ## Document Reading Order
 
 ```
-1. AGENTS.md (root)                  → Project overview & entry point
-2. memory-bank/agents.md             → Detailed behavior rules & workflow
-3. memory-bank/design-document.md    → Project goals & architecture
-4. memory-bank/tech-stack.md         → Technology constraints
-5. memory-bank/implementation-plan.md → Implementation roadmap
-6. memory-bank/todo.md               → Current task status
-7. memory-bank/progress/             → Stage completion records (reverse chronological)
+1. AGENTS.md (root)                  → Behavior rules & workflow
+2. memory-bank/design-document.md    → Project goals & architecture
+3. memory-bank/tech-stack.md         → Technology constraints
+4. memory-bank/implementation-plan.md → Implementation roadmap
+5. memory-bank/todo.md               → Current task status
+6. memory-bank/progress/             → Stage completion records (reverse chronological)
 ```
 
 ## Constraints
