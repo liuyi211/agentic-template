@@ -37,13 +37,13 @@
 ┌─────────────────────────────────────────────────────────────┐
 │                      memory-bank/                             │
 │  ┌─────────────┐  ┌─────────────┐  ┌──────────────────────┐  │
-│  │ agents.md   │  │design-doc   │  │ implementation-plan  │  │
-│  │ (行为规范)   │  │ (设计文档)   │  │ (实现路线图)          │  │
+│  │ design-doc  │  │ tech-stack  │  │ implementation-plan  │  │
+│  │ (设计文档)   │  │ (技术约束)   │  │ (实现路线图)          │  │
 │  └─────────────┘  └─────────────┘  └──────────────────────┘  │
-│  ┌─────────────┐  ┌─────────────┐  ┌──────────────────────┐  │
-│  │ tech-stack  │  │ todo.md     │  │ progress/            │  │
-│  │ (技术约束)   │  │ (当前任务)   │  │ (阶段成果记录)        │  │
-│  └─────────────┘  └─────────────┘  └──────────────────────┘  │
+│  ┌─────────────┐  ┌────────────────────────────────────────┐  │
+│  │ todo.md     │  │ progress/                              │  │
+│  │ (当前任务)   │  │ (阶段成果记录)                          │  │
+│  └─────────────┘  └────────────────────────────────────────┘  │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -75,19 +75,35 @@ rm -rf .git
 
 ### 2. 初始化项目信息
 
-编辑以下文件，填入你的项目信息：
+编辑以下文件，填入你的项目信息。
 
-| 文件 | 需要修改的内容 |
-|------|----------------|
-| `AGENTS.md` | 项目简介、AI 角色定义 |
-| `memory-bank/design-document.md` | 项目目标、架构设计 |
-| `memory-bank/tech-stack.md` | 具体技术选型 |
-| `memory-bank/implementation-plan.md` | 里程碑规划 |
-| `memory-bank/todo.md` | 当前阶段任务 |
+你可以直接把这些提示词发给 AI，让它帮你填写：
+
+| 文件 | 需要修改的内容 | 示例提示词 |
+|------|----------------|-----------|
+| `AGENTS.md` | 项目简介、AI 角色定义 | `更新 AGENTS.md：项目名是"电商管理后台"，用 React + Ant Design + Zustand 开发，你是前端专家 AI。当前 Stage 01。` |
+| `memory-bank/design-document.md` | 项目目标、架构设计 | `更新 design-document.md：做一个电商管理后台，核心功能有商品管理、订单管理、用户管理、数据报表。画一下架构图，用 React 前端 + Node.js 后端 + PostgreSQL。` |
+| `memory-bank/tech-stack.md` | 具体技术选型 | `更新 tech-stack.md：前端 React 18 + Vite + TypeScript + Ant Design 5 + Zustand，后端 Node.js 20 + Fastify + Prisma + PostgreSQL 15。` |
+| `memory-bank/implementation-plan.md` | 里程碑规划 | `更新 implementation-plan.md：分 5 个阶段：0 初始化、1 数据库、2 认证、3 商品/订单模块、4 报表/优化。每个阶段写清楚验收标准。` |
+| `memory-bank/todo.md` | 当前阶段任务 | `更新 todo.md：当前 Stage 01 - 数据库设计。高优先级任务：设计 Prisma Schema（用户、商品、订单表），预计 4 小时。` |
 
 ### 3. 开始 Vibe Coding
 
 打开你的 AI 编程工具（Claude Code / Cursor / Windsurf 等），AI 会自动读取 `AGENTS.md`，然后按规范执行。
+
+#### 常用开发提示词
+
+| 场景 | 提示词 |
+|------|--------|
+| **新会话恢复上下文** | `继续开发。先读取 AGENTS.md 恢复上下文。` |
+| **设计数据库** | `设计数据库 Schema，需要支持 [功能]。更新 design-document.md 和 prisma/schema.prisma，先给我方案确认。` |
+| **实现页面/功能** | `实现 [功能名称]。要求：[具体需求]。这是 Stage 0X 的任务，参考 implementation-plan.md。先出方案，确认后写代码。` |
+| **修复 Bug** | `修复 [Bug 描述]。先分析原因，再修复。修复后运行测试验证，更新 todo.md。` |
+| **重构代码** | `重构 [模块/文件]。目标是 [重构目标]。确保现有测试全部通过，不要改变外部接口。` |
+| **阶段收尾** | `Stage 0X 完成，执行收尾：1）归档 progress/stage_XX_xxx.md；2）更新 todo.md；3）更新 implementation-plan.md。准备进入下一阶段。` |
+| **代码审查** | `审查本次修改的代码，按 agents.md 的审查清单检查，输出审查报告。` |
+
+> **技巧**：首次使用某个功能时加上"先出方案，确认后写代码"，避免 AI 擅自执行。熟悉后可直接说"确认，开始执行"。
 
 ---
 
@@ -95,26 +111,25 @@ rm -rf .git
 
 ```
 agentic-template/
-├── AGENTS.md                          # AI 入口文件（必读）
+├── AGENTS.md                          # AI 行为规范与操作流程（必读）
 ├── README.md                          # 本文件
 ├── LICENSE                            # MIT 协议
 ├── .gitignore                         # Git 忽略规则
 │
-├── memory-bank/                       # AI 上下文记忆库
-│   ├── agents.md                      # Agent 详细行为规范
-│   ├── design-document.md             # 项目设计文档模板
-│   ├── tech-stack.md                  # 技术栈与约束模板
-│   ├── implementation-plan.md         # 实现计划与里程碑模板
-│   ├── todo.md                        # 当前任务追踪模板
-│   └── progress/                      # 阶段成果目录
-│       ├── stage_01_xxx.md            # 阶段 01 成果记录
-│       ├── stage_02_xxx.md            # 阶段 02 成果记录
+├── memory-bank/                       # AI 上下文记忆库（项目特定）
+│   ├── design-document.md             # 项目设计文档
+│   ├── tech-stack.md                  # 技术栈与约束
+│   ├── implementation-plan.md         # 实现计划与里程碑
+│   ├── todo.md                        # 当前任务追踪
+│   └── progress/                      # 阶段成果归档
+│       ├── stage_01_xxx.md
+│       ├── stage_02_xxx.md
 │       └── ...
 │
 └── examples/                          # 使用示例
-    ├── react-dashboard/               # React 管理后台示例
-    ├── node-api/                      # Node.js API 服务示例
-    └── nextjs-fullstack/              # Next.js 全栈示例
+    ├── react-dashboard/
+    ├── node-api/
+    └── nextjs-fullstack/
 ```
 
 ---
@@ -123,16 +138,9 @@ agentic-template/
 
 ### AGENTS.md
 
-**AI 进入项目时第一个读取的文件。** 包含：
-- 项目基本信息
-- AI 的角色与职责
-- 文档读取顺序指引
-- 快速上下文恢复检查清单
-
-### memory-bank/agents.md
-
-**详细的 Agent 行为规范。** 包含：
+**AI 进入项目时第一个读取的文件。** 定义 Agent 的完整行为规范，包含：
 - 核心原则（确定性、透明性）
+- 文档读取顺序与上下文恢复协议
 - 操作流程（理解→分析→设计→实现→验证→文档→汇报）
 - 测试流程（自动化 + 手动验证）
 - 代码审查清单
@@ -265,13 +273,13 @@ AI：[读取 AGENTS.md → design-document → todo.md → progress/]
 **Cursor**：创建 `.cursorrules` 文件：
 ```
 Always read AGENTS.md first before any action.
-Follow the workflow defined in memory-bank/agents.md.
+Follow the workflow defined in AGENTS.md.
 ```
 
 **Cline**：在设置中添加系统提示：
 ```
 You must read AGENTS.md before responding.
-Follow the context recovery protocol in memory-bank/agents.md.
+Follow the context recovery protocol in AGENTS.md.
 ```
 
 ---

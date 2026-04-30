@@ -22,12 +22,11 @@
 
 ```
 1. AGENTS.md (this file)
-2. memory-bank/agents.md
-3. memory-bank/design-document.md
-4. memory-bank/tech-stack.md
-5. memory-bank/implementation-plan.md
-6. memory-bank/todo.md
-7. memory-bank/progress/stage_00_init.md
+2. memory-bank/design-document.md
+3. memory-bank/tech-stack.md
+4. memory-bank/implementation-plan.md
+5. memory-bank/todo.md
+6. memory-bank/progress/stage_00_init.md
 ```
 
 ---
@@ -54,7 +53,7 @@ After reading all documents, output this summary:
 
 ## 4. Your Responsibilities
 
-1. Follow the workflow defined in `memory-bank/agents.md`
+1. Follow the workflow defined in `AGENTS.md` (project root)
 2. Prefer Server Components unless interactivity is required
 3. Use Prisma for all database operations
 4. Follow the Next.js App Router conventions
