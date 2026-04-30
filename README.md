@@ -95,7 +95,7 @@ rm -rf .git
 
 | 场景 | 提示词 |
 |------|--------|
-| **新会话恢复上下文** | `继续开发。先读取 AGENTS.md 恢复上下文。` |
+| **从零初始化项目** | `我要做一个 [目标描述]。请按 AGENTS.md 的规范执行：1）更新 AGENTS.md 填入项目信息；2）分析项目的[技术栈],写入tech-stack.md;3)制定实现计划写入 implementation-plan.md；4）设计数据库写入 design-document.md。全部确认后再开始写代码。` |
 | **设计数据库** | `设计数据库 Schema，需要支持 [功能]。更新 design-document.md 和 prisma/schema.prisma，先给我方案确认。` |
 | **实现页面/功能** | `实现 [功能名称]。要求：[具体需求]。这是 Stage 0X 的任务，参考 implementation-plan.md。先出方案，确认后写代码。` |
 | **修复 Bug** | `修复 [Bug 描述]。先分析原因，再修复。修复后运行测试验证，更新 todo.md。` |
